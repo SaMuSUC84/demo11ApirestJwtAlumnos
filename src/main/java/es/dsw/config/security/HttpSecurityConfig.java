@@ -96,7 +96,7 @@ public class HttpSecurityConfig
 		authorize		
 		/*
 		* Autorizaciones de endpoints teniendo en cuenta los roles.
-		*/
+		*
 			.requestMatchers(HttpMethod.GET, "/index").hasAnyRole(Role.ADMIN.name(),Role.USER.name())
 			.requestMatchers(HttpMethod.GET, "/test1").hasAnyRole(Role.ADMIN.name(),Role.USER.name())	
 			.requestMatchers(HttpMethod.GET, "/test2").hasAnyRole(Role.ADMIN.name(),Role.USER.name())	
@@ -104,7 +104,7 @@ public class HttpSecurityConfig
 			.requestMatchers(HttpMethod.GET, "/alumnos/getAll").hasAnyRole(Role.ADMIN.name(),Role.USER.name())	
 			.requestMatchers(HttpMethod.POST, "/alumnos/getOne").hasAnyRole(Role.ADMIN.name(),Role.USER.name())	
 			.requestMatchers(HttpMethod.POST, "/alumnos/add").hasAnyRole(Role.ADMIN.name(),Role.USER.name())	
-		
+		*/
 		
 		/*
 		 * Autorizacion de los endpoints púnlicos.
