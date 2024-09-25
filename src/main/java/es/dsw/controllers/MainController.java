@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -25,6 +25,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class MainController 
 {
+	/*
+	 * Mapeo del login y del index, código de prueba
+	 * plantillas en la demo 12.
+	 * 
 	@GetMapping(value = {"/login"})
 	synchronized public String login() { return "login";}
 	
@@ -45,13 +49,13 @@ public class MainController
 	    ResponseEntity.ok(entity);
 	    
 		return "index";
-	}	
+	}
+	*/	
 
 	@ResponseBody
 	@PostMapping (value = { "/autenticacion"}, produces = "application/json")
 	public String authenticate
-			(@RequestParam(name="username", required=true, defaultValue="") String username,
-			 @RequestParam(name="password", required=true, defaultValue="") String password,
+			(@RequestBody AuthenticationRequest authRequest,
 			 @CookieValue(name="token") String jwtToken,
 			 HttpServletResponse response) 
 	{		
@@ -61,10 +65,6 @@ public class MainController
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + jwtToken);
         headers.setContentType(MediaType.APPLICATION_JSON);
-        
-		AuthenticationRequest authRequest = new AuthenticationRequest();
-		authRequest.setUsername(username);
-		authRequest.setPassword(password);
 	
 		HttpEntity<AuthenticationRequest> request = new HttpEntity<>(authRequest, headers);	
 

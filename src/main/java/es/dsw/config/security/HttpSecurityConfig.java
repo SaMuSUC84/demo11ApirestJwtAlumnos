@@ -114,8 +114,6 @@ public class HttpSecurityConfig
 			.requestMatchers(HttpMethod.POST, "/autenticacion").permitAll()
 			.requestMatchers(HttpMethod.POST,"/auth/authenticate").permitAll()
 			.requestMatchers(HttpMethod.GET,"/auth/validate-token").permitAll()
-			.requestMatchers("/css/**").permitAll()
-			.requestMatchers("/js/**").permitAll()
 			.anyRequest().authenticated();
 	}
 
